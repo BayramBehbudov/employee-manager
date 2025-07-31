@@ -1,0 +1,57 @@
+.create-button {
+    background: linear-gradient(135deg, #4CAF50, #81C784) !important;
+    border: none !important;
+    border-radius: 14px !important;
+    padding: 0.475rem 1rem 0.475rem 1rem !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    box-shadow:
+        0 8px 16px -4px rgba(76, 175, 80, 0.3),
+        0 4px 6px -2px rgba(129, 199, 132, 0.05) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.create-button:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow:
+        0 16px 24px -4px rgba(56, 142, 60, 0.582),
+        0 8px 12px -4px rgba(67, 160, 71, 0.647) !important;
+    background: linear-gradient(135deg, #388E3C, #66BB6A) !important;
+}
+
+.create-button:active {
+    transform: translateY(-1px) scale(1.01) !important;
+}
+
+.remove-button {
+    background: linear-gradient(135deg, #F44336, #E57373) !important;
+    border: none !important;
+    border-radius: 14px !important;
+    padding: 0.475rem 1rem 0.475rem 1rem !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    box-shadow:
+        0 8px 16px -4px rgba(244, 67, 54, 0.3),
+        0 4px 6px -2px rgba(229, 115, 115, 0.05) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.remove-button:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow:
+        0 16px 24px -4px rgba(211, 47, 47, 0.582),
+        0 8px 12px -4px rgba(239, 83, 80, 0.647) !important;
+    background: linear-gradient(135deg, #D32F2F, #EF5350) !important;
+}
+
+.remove-button:active {
+    transform: translateY(-1px) scale(1.01) !important;
+}

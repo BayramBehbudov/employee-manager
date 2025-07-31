@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.employee-table-container {
+    font-family: 'Inter', sans-serif;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.table-wrapper {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow:
+        0 20px 40px -12px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.6);
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 100%;
+    overflow: hidden;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.table-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #1e293b, #475569);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    animation: slideInLeft 0.6s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.search-container {
+    position: relative;
+    min-width: 280px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.search-input {
+    width: 100% !important;
+    padding: 0.475rem 1rem 0.475rem 3rem !important;
+    border-radius: 14px !important;
+    border: 2px solid #e2e8f0 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px) !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+.search-input:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
+    background: rgba(255, 255, 255, 1) !important;
+    transform: translateY(-1px);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+
+.search-container:focus-within .search-icon {
+    color: #6366f1;
+}
+
+.add-button {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    border: none !important;
+    border-radius: 14px !important;
+    padding: 0.475rem 3rem 0.475rem 1rem !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    box-shadow:
+        0 8px 16px -4px rgba(99, 102, 241, 0.3),
+        0 4px 6px -2px rgba(99, 102, 241, 0.05) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.add-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.add-button:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow:
+        0 16px 24px -4px rgba(99, 102, 241, 0.4),
+        0 8px 12px -4px rgba(99, 102, 241, 0.1) !important;
+    background: linear-gradient(135deg, #5b21b6, #7c3aed) !important;
+}
+
+.add-button:hover::before {
+    left: 100%;
+}
+
+.add-button:active {
+    transform: translateY(-1px) scale(1.01) !important;
+}
+
+.employee-datatable {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 1 16px 32px -8px rgba(0, 0, 0, 0.04) !important;
+    animation: tableSlideIn 0.8s ease-out 0.2s both;
+    border: 1px solid #f1f5f9 !important;
+}
+
+@keyframes tableSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.employee-datatable .p-datatable-header {
+    background: linear-gradient(135deg, #fcf8f9, #f1f5f9) !important;
+    border: none !important;
+    padding: 1.25rem !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.employee-datatable .p-datatable-thead>tr>th {
+    background: linear-gradient(135deg, #4a5568, #2d3748) !important;
+    color: white !important;
+    padding: 1rem 0.875rem !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border: none !important;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.employee-datatable .p-datatable-thead>tr>th:hover {
+    background: linear-gradient(135deg, #2c5282, #2b6cb0) !important;
+}
+
+.employee-datatable .p-datatable-thead>tr>th::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.employee-datatable .p-datatable-thead>tr>th:hover::after {
+    transform: scaleX(1);
+}
+
+.employee-datatable .p-datatable-tbody>tr {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+}
+
+.employee-datatable .p-datatable-tbody>tr:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.04), rgba(139, 92, 246, 0.04)) !important;
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.employee-datatable .p-datatable-tbody>tr:hover img,
+.employee-datatable .p-datatable-tbody>tr:hover button {
+    transform: translateY(-1px) scale(1.05);
+}
+
+.employee-datatable .p-datatable-tbody>tr>td {
+    padding: 1rem 0.875rem !important;
+    border-color: #f1f5f9 !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease;
+    max-width: 200px;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.employee-avatar {
+    border-radius: 50% !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 3px solid white !important;
+}
+
+.employee-avatar:hover {
+    transform: scale(1.08) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16) !important;
+}
+
+.employee-name {
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    font-size: 0.95rem !important;
+    transition: color 0.3s ease;
+}
+
+.employee-datatable .p-datatable-tbody>tr:hover .employee-name {
+    color: #6366f1 !important;
+}
+
+.employee-position {
+    display: inline-block;
+    background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+    color: #5b21b6;
+    padding: 0.375rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+
+.employee-address {
+    color: #64748b;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.employee-phone {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.875rem;
+    color: #475569;
+    white-space: nowrap;
+}
+
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.action-button {
+    padding: 0.5rem !important;
+    border-radius: 10px !important;
+    border: none !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+    min-width: 36px;
+    height: 36px;
+}
+
+.action-button:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08) !important;
+}
+
+.action-button:active {
+    transform: translateY(-2px) scale(1.02) !important;
+}
+
+.edit-button {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: white !important;
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.25) !important;
+}
+
+
+
+.delete-button {
+    background: linear-gradient(135deg, #f43f5e, #e11d48) !important;
+    color: white !important;
+    box-shadow: 0 4px 6px -1px rgba(244, 63, 94, 0.25) !important;
+}
+
+
+.employee-datatable .p-paginator {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9) !important;
+    border: none !important;
+    border-top: 1px solid #e2e8f0 !important;
+    padding: 1.25rem !important;
+}
+
+.employee-datatable .p-paginator .p-paginator-pages .p-paginator-page {
+    border-radius: 8px !important;
+    margin: 0 0.25rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.employee-datatable .p-paginator .p-paginator-pages .p-paginator-page:hover {
+    background: #6366f1 !important;
+    color: white !important;
+    transform: translateY(-1px);
+}
+
+.employee-datatable .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: #6366f1 !important;
+    color: white !important;
+}
+
+@media (max-width: 768px) {
+    .employee-table-container {
+        padding: 1rem;
+    }
+
+    .table-wrapper {
+        padding: 1rem;
+        border-radius: 16px;
+    }
+
+    .table-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .table-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .header-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .search-container {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .add-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .employee-datatable .p-datatable-tbody>tr>td {
+        padding: 0.75rem 0.5rem !important;
+        font-size: 0.8rem !important;
+        max-width: 120px;
+    }
+
+    .employee-address {
+        max-width: 100px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .action-button {
+        min-width: 32px;
+        height: 32px;
+        padding: 0.375rem !important;
+    }
+
+    .employee-datatable .p-datatable-scrollable-wrapper {
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .employee-table-container {
+        padding: 1.5rem;
+    }
+
+    .table-title {
+        font-size: 1.625rem;
+    }
+
+    .search-container {
+        min-width: 250px;
+    }
+
+    .employee-datatable .p-datatable-tbody>tr>td {
+        max-width: 150px;
+    }
+
+    .employee-address {
+        max-width: 140px;
+    }
+}
+
+.loading-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.employee-datatable .p-datatable-scrollable-body::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.employee-datatable .p-datatable-scrollable-body::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.employee-datatable .p-datatable-scrollable-body::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 3px;
+}
+
+.employee-datatable .p-datatable-scrollable-body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5b21b6, #7c3aed);
+}
+
+.p-datatable-wrapper {
+    overflow-x: auto;
+}
+
+.p-datatable-scrollable .p-datatable-scrollable-wrapper {
+    overflow-x: auto;
+}
+
+.employee-datatable .p-datatable-tbody>tr>td:nth-child(4) {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.employee-datatable .p-datatable-tbody>tr>td:nth-child(5) {
+    white-space: nowrap;
+}
